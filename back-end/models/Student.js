@@ -1,5 +1,5 @@
 const defineStudentModel = (sequelize, DataTypes) => {
-  const student = sequelize.define('student', {
+  const Student = sequelize.define('Student', {
     name: DataTypes.STRING,
     guardian: DataTypes.STRING,
     phone1: DataTypes.STRING,
@@ -7,7 +7,7 @@ const defineStudentModel = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
   }, { timestamps: false });
 
-  return student;
+  return Student;
 };
 
 module.exports = defineStudentModel;
