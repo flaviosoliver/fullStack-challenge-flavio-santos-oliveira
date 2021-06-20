@@ -4,7 +4,7 @@
     "trybe-backend"
   ],
   "ignorePatterns": [
-    "**/migrations/*.js", "**/models/*.js"],
+    "**/migrations/*.js", "**/models/*.js", "**/seeders/*.js"],
   "rules": {
     "complexity": [
       "error", {

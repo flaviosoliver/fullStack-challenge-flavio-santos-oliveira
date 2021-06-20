@@ -3,7 +3,6 @@ const { User } = require('../models');
 const utils = require('../service/utils');
 
 const { secret } = utils;
-console.log('secret middleware', secret);
 
 const {
   C_401,

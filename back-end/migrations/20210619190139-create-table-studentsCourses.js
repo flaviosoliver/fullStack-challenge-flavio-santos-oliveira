@@ -13,7 +13,7 @@ module.exports = {
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
-      classId: {
+      courseId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {

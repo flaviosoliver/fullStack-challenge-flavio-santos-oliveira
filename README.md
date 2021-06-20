@@ -20,15 +20,15 @@ Empresa: Plataforma A+
 
 ## Back-End
 
-SGBD: MySQL
+- SGBD: MySQL
 
-Ambiente de execução: Node.JS
+- Ambiente de execução: Node.JS
 
-Framework Node.JS: Express.JS
+  - Framework Node.JS: Express.JS
 
-Arquitetura: ORM
+- Arquitetura: ORM
 
-Framework ORM: Sequelize
+  - Framework ORM: Sequelize
 
 ## Front-End
 
@@ -67,7 +67,7 @@ Desenvolver uma aplicação WEB ou APP, para controlar Alunos e Professores em s
 
 - Requisições de Usuário: `/user`
 
-  - Cadastro: Para cadastrar um usuário é necessário informar campos corretamente da seguinte forma (todos os campos são obrigatórios, caso desconformidade, erro característico é retornado):
+  - Cadastro: Para cadastrar um usuário é necessário informar campos corretamente da seguinte forma (todos os campos são obrigatórios, caso desconformidade, erro característico é retornado), verbo/rota `POST /user`:
 
     - Nome (name): mínimo de 6 (seis) caracteres;
 
@@ -75,7 +75,7 @@ Desenvolver uma aplicação WEB ou APP, para controlar Alunos e Professores em s
 
     - Email (email): padrão válido: `nome@dominio.servico` (user@escola.com)
 
-    - Perfil (profile): são 3 (três) perfis, deve-se informar qual: `Diretoria`, `Docente` ou `Estudante`;
+    - Perfil (profile): são 3 (três) perfis, deve-se informar qual: `Diretoria` ou `Docente`;
 
     - Exemplo de requisição realizada com sucesso:
 
@@ -113,16 +113,52 @@ Desenvolver uma aplicação WEB ou APP, para controlar Alunos e Professores em s
 
         `'User already registered'`
 
-  - Listar todas as pessoas Usuárias cadastradas:
+  - Listar todas as pessoas Usuárias cadastradas, verbo/rota `GET /user`:
 
     - É preciso possuir um token para acessar a listagem de pessoas cadastradas
 
-    - Caso não esteja com um toke válido, será gerado um Status HTTP 401 com a mensagem:
+      - Se não estiver com um token válido, será gerado um Status HTTP 401 com a mensagem:
 
-      `'Token not found'`
+        `'Expired or invalid token'`
+
+        - Se o token não for encontrado
+
+          `'Token not found'`
 
     - Obtendo sucesso na requisição, será exibida a listagem:
 
       ![Requisição com Sucesso](./public/C_200_Listagem_Users.png)
+
+  - Listar pessoa Usuária através do Id, verbo/rota `GET /user/:id`
+
+    - Caso requisite por um Id não existente, será exibido o Status HTTP 404, com a mensagem:
+
+      `'User does not exist'`
+
+    - Se não estiver com um token válido, será gerado um Status HTTP 401 com a mensagem:
+
+      `'Expired or invalid token'`
+
+      - Se o token não for encontrado
+
+        `'Token not found'`
+
+    - Obtendo sucesso na requisição, será exibida a listagem:
+
+    ![Requisição com Sucesso](./public/C_200_Listagem_Por_Id.png)
+
+  - Apagar: a pessoa usuária poderá apagar o seu prórpio cadastro da tabela Users
+
+    - Se não estiver com um token válido, será gerado um Status HTTP 401 com a mensagem:
+
+      `'Expired or invalid token'`
+
+      - Se o token não for encontrado
+
+        `'Token not found'`
+
+    - Estando com o token válido
+
+    ![Requisição com Sucesso](./public/C_204_Apagar_Usuario.png)
 
 ## Validações no Front-End

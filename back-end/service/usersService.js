@@ -1,5 +1,4 @@
-// const bcrypt = require('bcrypt-nodejs');
-// const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const utils = require('./utils');
 
 const { User } = require('../models');
@@ -15,6 +14,7 @@ const {
   C400ProfileRequired,
   C400ProfileRules,
   C409,
+  C404UserNotExist,
 } = utils.errorMessage;
 
 function validateEmail(email) {
@@ -69,8 +69,7 @@ const passwordLength = (password) => {
 const validateProfile = (profile) => {
   console.log('profile função', profile);
   if (profile !== 'Diretoria'
-  && profile !== 'Docente'
-  && profile !== 'Estudante') {
+  && profile !== 'Docente') {
     return { code400: true, message: C400ProfileRules };
   }
   return true;
@@ -113,6 +112,13 @@ const verifyLength = (password, name) => {
   return true;
 };
 
+const catchUser = (req) => {
+  const token = req.headers.authorization;
+  const decoded = jwt.verify(token, utils.secret);
+  const { userId } = decoded.data;
+  return userId;
+};
+
 const create = async (name, email, password, profile) => {
   const checkRequired = verifyRequired(name, email, password, profile);
   const checkProfileRule = validateProfile(profile);
@@ -139,7 +145,24 @@ const getAllUsers = async () => {
   return users;
 };
 
+const getUserById = async (id) => {
+  const result = await User.findOne({ where: { id } });
+  if (!result) {
+      return {
+        code404: true, message: C404UserNotExist,
+      };
+  }
+  return result;
+};
+
+const deleteUser = async (req) => {
+  const userId = catchUser(req);
+  await User.destroy({ where: { id: userId } });
+};
+
 module.exports = {
   create,
   getAllUsers,
+  getUserById,
+  deleteUser,
 };
