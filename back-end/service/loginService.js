@@ -65,11 +65,11 @@ function validateEmail(email) {
 }
 
 const emailCheck = async (email) => {
-  const user = await User.findOne({ where: { email } });
-  if (!user) {
+  const user = await User.findAndCountAll({ where: { email } });
+  if (user.count === 0) {
     return false;
   }
-  return user;
+  return true;
 };
 
 const passwordCheck = async (email, password) => {
@@ -81,33 +81,23 @@ const passwordCheck = async (email, password) => {
   return true;
 };
 
-// const verifyCountEmail = async (email) => {
-//   const countEmail = await User.findOne({ where: { email } });
-//   if (countEmail) {
-//     return countEmail;
-//   }
-//   return false;
-// };
-
 const registerUser = async (email, password) => {
   const checkExistis = fieldsExistis(email, password);
   if (checkExistis !== true) { return checkExistis; }
-
   const checkAllow = fieldsAllow(email, password);
   if (checkAllow !== true) { return checkAllow; }
-
   const checkEmail = validateEmail(email);
   if (checkEmail !== true) {
     return { code400: true, message: C400EmailValid };
   }
-
   const user = await emailCheck(email);
-  console.log('user', user);
-  const userPassword = await passwordCheck(email, password);
-  if (user !== true || userPassword !== true) {
+  if (user !== true) {
     return { code400: true, message: C400InvalidFields };
   }
-  
+  const userPassword = await passwordCheck(email, password);
+  if (userPassword !== true) {
+    return { code400: true, message: C400InvalidFields };
+  }
   const token = utils.generateToken(user.id, user.email, user.password);
   return token;
 };
