@@ -29,7 +29,7 @@ const errorMessage = {
   C409: 'User already registered',
   C400EmailNotAllow: '"email" is not allowed to be empty',
   C400PasswordNotAllow: '"password" is not allowed to be empty',
-  C400InvalidFields: 'Invalid fields',
+  C400InvalidFields: 'Invalid fields, "email" or "password" incorrect',
   C401TokenNotFound: 'Token not found',
   C401TokenInvalid: 'Expired or invalid token',
   C404UserNotExist: 'User does not exist',

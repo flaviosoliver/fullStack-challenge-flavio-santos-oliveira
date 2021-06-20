@@ -13,14 +13,12 @@ router.get('/user',
   validateToken,
   usersController.getAllUsers);
 
-// router.get('/user/:id',
-// validateTokenMiddleware,
-// usersController.getUserById);
+router.get('/user/:id',
+validateToken,
+usersController.getUserById);
 
-// router.put('/user/:id', );
-
-// router.delete('/user/me',
-// validateTokenMiddleware,
-// usersController.deleteUser);
+router.delete('/user/me',
+validateToken,
+usersController.deleteUser);
 
 module.exports = router;
