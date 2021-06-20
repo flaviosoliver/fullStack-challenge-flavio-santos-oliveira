@@ -2,16 +2,16 @@ const express = require('express');
 
 const router = express.Router();
 const usersController = require('../controller/usersController');
-// const middleware = require('../middleware');
+const middleware = require('../middleware');
 
-// const { validateTokenMiddleware } = middleware;
+const { validateToken } = middleware;
 
 router.post('/user',
   usersController.createUser);
 
-// router.get('/user',
-//   validateTokenMiddleware,
-//   usersController.getAllUsers);
+router.get('/user',
+  validateToken,
+  usersController.getAllUsers);
 
 // router.get('/user/:id',
 // validateTokenMiddleware,

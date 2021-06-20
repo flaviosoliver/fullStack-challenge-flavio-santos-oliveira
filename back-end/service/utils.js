@@ -56,7 +56,6 @@ const cryptPassword = (password) => {
   let key = password;
   const salt = bcrypt.genSaltSync(5);
   key = bcrypt.hashSync(key, salt);
-  console.log('key de utils', key);
   return key;
 };
 

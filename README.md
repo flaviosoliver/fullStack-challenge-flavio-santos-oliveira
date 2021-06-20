@@ -65,7 +65,7 @@ Desenvolver uma aplicação WEB ou APP, para controlar Alunos e Professores em s
 
 ## Validações no Back-End
 
-- Requisições de Usuário
+- Requisições de Usuário: `/user`
 
   - Cadastro: Para cadastrar um usuário é necessário informar campos corretamente da seguinte forma (todos os campos são obrigatórios, caso desconformidade, erro característico é retornado):
 
@@ -112,5 +112,17 @@ Desenvolver uma aplicação WEB ou APP, para controlar Alunos e Professores em s
         - Pessoa usuária já cadastrada
 
         `'User already registered'`
+
+  - Listar todas as pessoas Usuárias cadastradas:
+
+    - É preciso possuir um token para acessar a listagem de pessoas cadastradas
+
+    - Caso não esteja com um toke válido, será gerado um Status HTTP 401 com a mensagem:
+
+      `'Token not found'`
+
+    - Obtendo sucesso na requisição, será exibida a listagem:
+
+      ![Requisição com Sucesso](./public/C_200_Listagem_Users.png)
 
 ## Validações no Front-End

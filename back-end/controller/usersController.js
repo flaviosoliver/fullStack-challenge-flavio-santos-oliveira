@@ -2,7 +2,7 @@ const utils = require('../service/utils');
 const usersService = require('../service/usersService');
 
 const {
-  C_201, C_400, C_409, C_500,
+  C_200, C_201, C_400, C_409, C_500,
 } = utils.statusHttp;
 
 const createUser = async (req, res) => {
@@ -24,6 +24,21 @@ const createUser = async (req, res) => {
   }
 };
 
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await usersService.getAllUsers();
+    return res
+      .status(C_200)
+      .send(users);
+  } catch (error) {
+    console.error(error);
+    return res
+      .status(C_500)
+      .json({ message: error.message });
+  }
+};
+
 module.exports = {
   createUser,
+  getAllUsers,
 };

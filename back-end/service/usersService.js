@@ -67,10 +67,11 @@ const passwordLength = (password) => {
 };
 
 const validateProfile = (profile) => {
+  console.log('profile função', profile);
   if (profile !== 'Diretoria'
-  || profile !== 'Docente'
-  || profile !== 'Estudante') {
-    return false;
+  && profile !== 'Docente'
+  && profile !== 'Estudante') {
+    return { code400: true, message: C400ProfileRules };
   }
   return true;
 };
@@ -114,25 +115,31 @@ const verifyLength = (password, name) => {
 
 const create = async (name, email, password, profile) => {
   const checkRequired = verifyRequired(name, email, password, profile);
+  const checkProfileRule = validateProfile(profile);
   const key = utils.cryptPassword(password);
-  if (checkRequired !== true) {
-    return checkRequired;
-  }
+  if (checkRequired !== true) { return checkRequired; }
   const checkLength = verifyLength(name, password);
   if (await verifyCountEmail(email) === true) {
     return { code409: true, message: C409 };
   }
-  if (checkLength !== true) {
-    return checkLength;
-  }
-  if (validateProfile(profile) !== true) {
-    return { code400: true, message: C400ProfileRules };
-  }
+  if (checkLength !== true) { return checkLength; }
+  if (checkProfileRule !== true) { return checkProfileRule; }
   const login = await User.create({ name, email, password: key, profile });
   const token = utils.generateToken(login.id, login.email, login.key);
   return token;
 };
 
+const getAllUsers = async () => {
+  const users = await User.findAll();
+  if (!users) {
+    return {
+      code500: true, message: 'It was not possible to complete your request.',
+    };
+  }
+  return users;
+};
+
 module.exports = {
   create,
+  getAllUsers,
 };
