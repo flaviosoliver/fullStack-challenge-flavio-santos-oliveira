@@ -63,6 +63,14 @@ Desenvolver uma aplicação WEB ou APP, para controlar Alunos e Professores em s
 
 ## Soluções Implementadas
 
+  - Estruturação de Banco de Dados
+
+    - Nome do Banco de Dados:
+      `colleges`
+    - (EER) Diagram
+
+      ![Diagrama](./public/diagrama.png)
+
 ## Validações no Back-End
 
 - Requisições de Usuário: `/user`
@@ -73,7 +81,7 @@ Desenvolver uma aplicação WEB ou APP, para controlar Alunos e Professores em s
 
     - Senha (password): mínimo de 6 (seis) caracteres;
 
-    - Email (email): padrão válido: `nome@dominio.servico` (user@escola.com)
+    - E-mail (email): padrão válido: `nome@dominio.servico` (user@escola.com)
 
     - Perfil (profile): são 3 (três) perfis, deve-se informar qual: `Diretoria` ou `Docente`;
 
@@ -160,5 +168,27 @@ Desenvolver uma aplicação WEB ou APP, para controlar Alunos e Professores em s
     - Estando com o token válido
 
     ![Requisição com Sucesso](./public/C_204_Apagar_Usuario.png)
+
+  - Requisições de Login: `/login`
+
+    Sendo usuária já cadastrada no sistema, a pessoa pode realizar o login e ter o seu token gerado
+
+    - Validações de login, campos e-mail e senha são obrigatórios
+
+      - E-mail e senha devem ser informados corretamente
+        ![Requisição com Sucesso](./public/C_200_Login.png)
+
+      - E-mail com formato inválido
+
+        `'"email" must be a valid email'`
+      - Campo e-mail inexistente ou não informado
+
+        `'"email" is required'`
+      - Campo senha inexistente ou não informado
+
+        `'"password" is required'`
+      - E-mail ou senha incorretos
+
+        `'Invalid fields, "email" or "password" incorrect'`
 
 ## Validações no Front-End
