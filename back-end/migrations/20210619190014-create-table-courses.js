@@ -2,23 +2,23 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('studentsClassrooms', {
-      studentId: {
+    await queryInterface.createTable('Courses', {
+      id: {
         type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
         allowNull: false,      
-        references: {
-          model: 'students',
-          key: 'id',
-        },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE",
       },
-      classId: {
+      name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      teacherId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'classrooms',
-          key: 'id',
+          model: 'Teachers',
+          foreignKey: 'id',
         },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
@@ -27,6 +27,6 @@ module.exports = {
   },
 
   down: async (queryInterface, _Sequelize) => {
-    await queryInterface.dropTable('studentsClassrooms');
+    await queryInterface.dropTable('Courses');
   }
 };

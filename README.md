@@ -60,3 +60,69 @@ Desenvolver uma aplicação WEB ou APP, para controlar Alunos e Professores em s
   - Contatos
 - Os Professores devem ser capazes de adicionar observações sobre a Turma e sobre determinado Aluno.
 - A solução deve possibilitar buscar com base em alguma informação, de escolha livre, contida nas entidades.
+
+## Soluções Implementadas
+
+## Validações no Back-End
+
+- Requisições de Usuário: `/user`
+
+  - Cadastro: Para cadastrar um usuário é necessário informar campos corretamente da seguinte forma (todos os campos são obrigatórios, caso desconformidade, erro característico é retornado):
+
+    - Nome (name): mínimo de 6 (seis) caracteres;
+
+    - Senha (password): mínimo de 6 (seis) caracteres;
+
+    - Email (email): padrão válido: `nome@dominio.servico` (user@escola.com)
+
+    - Perfil (profile): são 3 (três) perfis, deve-se informar qual: `Diretoria`, `Docente` ou `Estudante`;
+
+    - Exemplo de requisição realizada com sucesso:
+
+    ![Cadastro com sucesso](./public/C_201_Cadastro.png)
+
+    - Como retorno de erro nas validações temos:
+
+      - no Status HTTP 400:
+
+        - Nome com tamanho menor que 6 caracteres
+
+        `'"Name" length must be at least 6 characters long'`
+        - E-mail com formato inválido
+
+        `'"email" must be a valid email'`
+        - Campo e-mail inexistente ou não informado
+
+        `'"email" is required'`
+        - Senha com tamanho menor que 6 caracteres
+
+        `'"password" length must be 6 characters long'`
+        - Campo senha inexistente ou não informado
+
+        `'"password" is required'`
+        - Campo perfil inexistente ou não informado
+
+        `'"profile" is required'`
+        - Campo perfil com atribuição inexistente
+
+        `'"profile" must be a valid profile'`
+
+      - no Status HTTP 409:
+
+        - Pessoa usuária já cadastrada
+
+        `'User already registered'`
+
+  - Listar todas as pessoas Usuárias cadastradas:
+
+    - É preciso possuir um token para acessar a listagem de pessoas cadastradas
+
+    - Caso não esteja com um toke válido, será gerado um Status HTTP 401 com a mensagem:
+
+      `'Token not found'`
+
+    - Obtendo sucesso na requisição, será exibida a listagem:
+
+      ![Requisição com Sucesso](./public/C_200_Listagem_Users.png)
+
+## Validações no Front-End

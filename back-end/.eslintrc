@@ -6,6 +6,10 @@
   "ignorePatterns": [
     "**/migrations/*.js", "**/models/*.js"],
   "rules": {
-    
+    "complexity": [
+      "error", {
+        "max": 6
+        }
+      ]
   }
 }
