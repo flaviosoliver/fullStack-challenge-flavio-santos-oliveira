@@ -90,7 +90,7 @@ const registerUser = async (email, password) => {
   if (checkEmail !== true) {
     return { code400: true, message: C400EmailValid };
   }
-  const user = await emailCheck(email);
+  let user = await emailCheck(email);
   if (user !== true) {
     return { code400: true, message: C400InvalidFields };
   }
@@ -98,6 +98,7 @@ const registerUser = async (email, password) => {
   if (userPassword !== true) {
     return { code400: true, message: C400InvalidFields };
   }
+  user = await User.findOne({ where: { email } });
   const token = utils.generateToken(user.id, user.email, user.password);
   return token;
 };

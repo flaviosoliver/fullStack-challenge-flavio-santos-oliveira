@@ -10,6 +10,7 @@
     "debug-back": "npm --prefix back-end/ run debug&",
     "start-front": "npm --prefix front-end/ run start&",
     "start": "npm run start-back && npm run start-front",
+    "start-full": "npm run start-back && npm run start-front",
     "install-start-full": "npm run install-back && npm run install-front && npm run start-back && npm run start-front",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
