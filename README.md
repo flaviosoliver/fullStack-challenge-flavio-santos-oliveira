@@ -30,11 +30,14 @@ Empresa: Plataforma A+
 
   - Framework ORM: Sequelize
 
+- Configurado para ser executado em `http://localhost:3001`
 ## Front-End
 
-Interface: React.JS
+- Interface: React.JS
 
-### Autor
+- Configurado para ser executado em `http://localhost:3000`
+
+## Autor
 
 Flávio Santos Oliveira | email: flavsoliver@gmail.com
 
@@ -192,3 +195,5 @@ Desenvolver uma aplicação WEB ou APP, para controlar Alunos e Professores em s
         `'Invalid fields, "email" or "password" incorrect'`
 
 ## Validações no Front-End
+
+  - Ao iniciar a aplicação, será aberto o site na tela de login, `http://localhost:3000/login`
