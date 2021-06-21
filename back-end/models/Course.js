@@ -16,6 +16,7 @@ const defineCourseModel = (sequelize, DataTypes) => {
       as: 'school',
       foreignKey: 'schoolId',
     });
+  };
   Course.associate = (models) => {
     Course.belongsTo(models.Teacher, {
       as: 'teacher',
@@ -27,4 +28,3 @@ const defineCourseModel = (sequelize, DataTypes) => {
 };
 
 module.exports = defineCourseModel;
-

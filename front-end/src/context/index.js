@@ -1,4 +1,4 @@
-import CollegeContext from "./college";
+import CollegeContext from './college';
 import Provider from './provider';
 
-export { CollegeContext, Provider};
+export { CollegeContext, Provider };

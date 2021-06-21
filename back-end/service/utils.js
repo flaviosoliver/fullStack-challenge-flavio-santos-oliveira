@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt-nodejs');
 const jwt = require('jsonwebtoken');
 
 const SECONDS = 60;
-const MULTIPLIER = 3000;
+const MULTIPLIER = 300000;
 const secret = process.env.SECRET || 'developing';
 
 const statusHttp = {

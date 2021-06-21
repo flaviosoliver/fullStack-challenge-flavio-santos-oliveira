@@ -1,5 +1,7 @@
 const METHOD_POST = 'POST';
+const METHOD_GET = 'GET';
 // const METHOD_PUT = 'PUT';
+// const METHOD_DELETE = 'DELETE';
 const CONTENT_TYPE = 'application/json';
 const URL_USER_LOGIN = 'http://localhost:3001/login';
 
@@ -21,6 +23,8 @@ const loginFetch = async (userLogin) => {
     });
   return user;
 };
+
+// const shoolsFetch = async ()
 
 export {
   loginFetch,

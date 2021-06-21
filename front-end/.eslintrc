@@ -5,13 +5,11 @@
     "airbnb/hooks"
   ],
   "ignorePatterns": [
-    
+    "src/reportWebVitals.js", "reportWebVitals.js"
   ],
   "rules": {
-    "complexity": [
-      "error", {
-        "max": 6
-        }
-      ]
+    "complexity": [ "error", { "max": 6 }],
+    "react/jsx-filename-extension": [0],
+    "react/react-in-jsx-scope": "off"
   }
 }
