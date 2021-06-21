@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import { loginFetch } from '../../services';
 import './Login.css';
+
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,7 +22,9 @@ export default function Login() {
     const user = await loginFetch(userLoginData);
 
     localStorage.setItem('user', JSON.stringify(user));
-    console.log('submit');
+    if (user.message) {
+      return alert('E-mail ou Senha incorretos. Tente novamente.')
+    }
     history.push('/home');
   };
   const handleRegister = () => {
