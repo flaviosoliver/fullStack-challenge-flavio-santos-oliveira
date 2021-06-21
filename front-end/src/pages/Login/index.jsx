@@ -22,47 +22,49 @@ export default function Login() {
     const user = await loginFetch(userLoginData);
 
     localStorage.setItem('user', JSON.stringify(user));
-    if (user.message) {
-      return alert('E-mail ou Senha incorretos. Tente novamente.')
+    if (!user.token) {
+      return alert('E-mail ou Senha incorretos. Tente novamente.');
     }
-    history.push('/home');
+    return history.push('/home');
   };
   const handleRegister = () => {
     history.push('/register');
   };
   return (
-    <main>
-      <div className='container-login'>
-        <Form className='form-login'>
-          <Form.Group controlId='formBasicEmail'>
+    <main className="login">
+      <div className="container-login">
+        <Form className="form-login">
+          <Form.Group controlId="formBasicEmail">
             <Form.Label>E-mail</Form.Label>
             <Form.Control
-              type='email'
-              placeholder='Informe seu e-mail'
-              onChange={ ({ target: { value } }) => setEmail(value) } />
+              type="email"
+              placeholder="Informe seu e-mail"
+              onChange={({ target: { value } }) => setEmail(value)}
+            />
           </Form.Group>
 
-          <Form.Group controlId='formBasicPassword'>
+          <Form.Group controlId="formBasicPassword">
             <Form.Label>
               Senha
             </Form.Label>
             <Form.Control
-              type='password'
-              placeholder='Insira sua senha'
-              onChange={ ({ target: { value } }) => setPassword(value) } />
+              type="password"
+              placeholder="Insira sua senha"
+              onChange={({ target: { value } }) => setPassword(value)}
+            />
           </Form.Group>
           <Button
-            variant='primary'
-            type='submit'
-            onClick={ (event) => handleSubmit(event) }
-            disabled={ !inputValidation() }
-            >
+            variant="primary"
+            type="submit"
+            onClick={(event) => handleSubmit(event)}
+            disabled={!inputValidation()}
+          >
             Entrar
           </Button>
           <Button
             variant="primary"
             type="button"
-            onClick={ handleRegister }
+            onClick={handleRegister}
           >
             Ainda não tenho cadastro
           </Button>

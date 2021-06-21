@@ -6,16 +6,19 @@ module.exports = {
       [{
         id: 1,
         name: 'Turma-1A',
+        schoolId: 1,
         teacherId: 1,
       },
       {
         id: 2,
         name: 'Turma-1B',
+        schoolId: 1,
         teacherId: 2,
       },
       {
         id: 3,
-        name: 'Turma-2A',
+        name: 'Turma-1A',
+        schoolId: 2,
         teacherId: 3,
       }], { timestamps: false });
   },

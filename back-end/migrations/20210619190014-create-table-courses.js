@@ -23,6 +23,16 @@ module.exports = {
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
+      schoolId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Schools',
+          foreignKey: 'id',
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+      },
     });
   },
 

@@ -200,4 +200,10 @@ Desenvolver uma aplicação WEB ou APP, para controlar Alunos e Professores em s
 
   - O botão `Entrar` permanece desativado até a pessoa inserir um e-mail de formato válido e uma senha com no mínimo 6 (seis) caracteres.
   
-  - Caso insira valores que divergem do cadastro do Banco de Dados, será exibido uma mensagem de alerta de 
+  - Caso insira valores que divergem do cadastro do Banco de Dados, será exibido uma mensagem de alerta
+
+    `'E-mail ou Senha incorretos. Tente novamente.'`
+  
+  - Quando inserir os dados corretos e clicado em `Entrar`, o site será redirecionado para
+  
+    `http://localhost:3000/home`

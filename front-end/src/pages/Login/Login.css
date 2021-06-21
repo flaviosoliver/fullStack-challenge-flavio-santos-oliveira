@@ -1,14 +1,10 @@
-main {
+.login {
   display: flex;
   background-image: url('../../images/school-or-office-supplies-frame-on-rustic-wooden-table.jpg');
   width: 100%;
   height: 100vh;
   background-repeat: no-repeat;
   align-items: center;
-}
-
-.container-login {
-
 }
 
 .form-login {

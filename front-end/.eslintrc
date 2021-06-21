@@ -1,0 +1,17 @@
+{
+  "root": true,
+  "extends": [
+    "airbnb",
+    "airbnb/hooks"
+  ],
+  "ignorePatterns": [
+    
+  ],
+  "rules": {
+    "complexity": [
+      "error", {
+        "max": 6
+        }
+      ]
+  }
+}
