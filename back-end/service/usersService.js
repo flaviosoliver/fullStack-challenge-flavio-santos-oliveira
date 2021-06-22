@@ -131,7 +131,7 @@ const create = async (name, email, password, profile) => {
   if (checkLength !== true) { return checkLength; }
   if (checkProfileRule !== true) { return checkProfileRule; }
   const login = await User.create({ name, email, password: key, profile });
-  const token = utils.generateToken(login.id, login.email, login.key);
+  const token = utils.generateToken(login.id, login.email, login.profile);
   return token;
 };
 

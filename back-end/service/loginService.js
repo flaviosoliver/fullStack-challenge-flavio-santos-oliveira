@@ -99,7 +99,7 @@ const registerUser = async (email, password) => {
     return { code400: true, message: C400InvalidFields };
   }
   user = await User.findOne({ where: { email } });
-  const token = utils.generateToken(user.id, user.email, user.password);
+  const token = utils.generateToken(user.id, user.email, user.profile);
   return token;
 };
 

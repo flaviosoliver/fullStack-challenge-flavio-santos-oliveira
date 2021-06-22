@@ -1,10 +1,10 @@
 import React from 'react';
-import { Header } from '../../components';
+import { HeaderTeacher } from '../../components';
 
 export default function Home() {
   return (
     <main>
-      <Header />
+      <HeaderTeacher />
       Escolha a Escola desejada
     </main>
   );

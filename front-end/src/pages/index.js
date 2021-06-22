@@ -1,11 +1,13 @@
 import Login from './Login';
 import Main from './Main';
-import Home from './Home';
+import HomePrincipal from './HomePrincipal';
+import HomeTeacher from './HomeTeacher';
 import Register from './Register';
 
 export {
   Login,
   Main,
-  Home,
+  HomePrincipal,
+  HomeTeacher,
   Register,
 };

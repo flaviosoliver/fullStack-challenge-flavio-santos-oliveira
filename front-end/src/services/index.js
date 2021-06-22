@@ -1,6 +1,11 @@
 import axios from 'axios';
+import jwt from 'jsonwebtoken';
+
+require('dotenv');
 
 const URL_BACK_END = 'http://localhost:3001';
+
+const secret = process.env.SECRET || 'developing';
 
 const login = async (userLogin) => {
   const { email, password } = userLogin;
@@ -64,10 +69,17 @@ const newUserRegister = async (newUserData) => {
   return result;
 };
 
+const decodedToken = (token) => {
+  const decoded = jwt.verify(token, secret);
+  const { userId, email, profile } = decoded.data;
+  return { userId, email, profile };
+};
+
 export {
   login,
   emailAndPasswordValidation,
   searchUserByEmail,
   newUserRegister,
   pathRedirectByProfile,
+  decodedToken,
 };

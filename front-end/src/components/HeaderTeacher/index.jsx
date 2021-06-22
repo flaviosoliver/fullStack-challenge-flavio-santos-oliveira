@@ -3,7 +3,7 @@ import {
   Navbar, Nav, NavDropdown, Form, FormControl, Button,
 } from 'react-bootstrap';
 
-export default function Header() {
+export default function HeaderTeacher() {
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand>Gestão Escolas Públicas</Navbar.Brand>

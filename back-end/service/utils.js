@@ -42,12 +42,12 @@ const successMessage = {
   C200User: 'User exists',
 }
 
-const generateToken = (userId, email, password) => {
+const generateToken = (userId, email, profile) => {
   const jwtConfig = {
     expiresIn: SECONDS * MULTIPLIER,
     algorithm: 'HS256',
   };
-  const token = jwt.sign({ data: { userId, email, password } }, secret, jwtConfig);
+  const token = jwt.sign({ data: { userId, email, profile } }, secret, jwtConfig);
   return token;
 };
 

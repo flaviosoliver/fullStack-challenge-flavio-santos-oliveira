@@ -1,5 +1,7 @@
-import Header from './Header';
+import HeaderPrincipal from './HeaderPrincipal';
+import HeaderTeacher from './HeaderTeacher';
 
 export {
-  Header,
+  HeaderPrincipal,
+  HeaderTeacher,
 };
