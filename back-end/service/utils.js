@@ -38,6 +38,10 @@ const errorMessage = {
   C409: 'User already registered',
 };
 
+const successMessage = {
+  C200User: 'User exists',
+}
+
 const generateToken = (userId, email, password) => {
   const jwtConfig = {
     expiresIn: SECONDS * MULTIPLIER,
@@ -57,6 +61,7 @@ const cryptPassword = (password) => {
 module.exports = {
   statusHttp,
   errorMessage,
+  successMessage,
   generateToken,
   cryptPassword,
   secret,

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
-import { loginFetch } from '../../services';
+import { login } from '../../services';
 import './Login.css';
 
 export default function Login() {
@@ -19,7 +19,7 @@ export default function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const userLoginData = { email, password };
-    const user = await loginFetch(userLoginData);
+    const user = await login(userLoginData);
 
     localStorage.setItem('user', JSON.stringify(user));
     if (!user.token) {

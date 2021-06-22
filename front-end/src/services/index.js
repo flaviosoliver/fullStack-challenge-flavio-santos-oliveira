@@ -1,31 +1,73 @@
-const METHOD_POST = 'POST';
-const METHOD_GET = 'GET';
-// const METHOD_PUT = 'PUT';
-// const METHOD_DELETE = 'DELETE';
-const CONTENT_TYPE = 'application/json';
-const URL_USER_LOGIN = 'http://localhost:3001/login';
+import axios from 'axios';
 
-const loginFetch = async (userLogin) => {
+const URL_BACK_END = 'http://localhost:3001';
+
+const login = async (userLogin) => {
   const { email, password } = userLogin;
-  let user;
-  await fetch(URL_USER_LOGIN, {
-    method: METHOD_POST,
+  const result = await axios.post(`${URL_BACK_END}/login`, {
+    email,
+    password,
+  })
+    .then((response) => response.data)
+    .catch((error) => {
+      if (error) return { error: 'Usuário ou senha inválido' };
+    });
+  return result;
+};
+
+const emailAndPasswordValidation = (name, email, password) => {
+  const emailRegex = /\S+@\S+\.\S+/;
+  const passwordMinLength = 6;
+  const verifyName = !name;
+
+  return emailRegex.test(email)
+    && password.length >= passwordMinLength
+    && !verifyName;
+};
+
+const pathRedirectByProfile = (profile) => {
+  if (profile === 'Diretoria') return '/home/diretoria';
+  if (profile === 'Docente') return '/home/docente';
+};
+
+const searchUserByEmail = async (userEmail) => {
+  let result;
+  await fetch(`${URL_BACK_END}/user/search`, {
+    method: 'POST',
     headers: {
-      'Content-type': CONTENT_TYPE,
+      'Content-type': 'application/json',
     },
     body: JSON.stringify({
-      email,
-      password,
+      email: userEmail,
     }),
   }).then((response) => response.json())
     .then((responseJSON) => {
-      user = responseJSON;
+      result = responseJSON;
     });
-  return user;
+  return result;
 };
 
-// const shoolsFetch = async ()
+const newUserRegister = async (newUserData) => {
+  const {
+    name, email, password, profile,
+  } = newUserData;
+  const result = await axios.post(`${URL_BACK_END}/user/register`, {
+    name,
+    email,
+    password,
+    profile,
+  })
+    .then((response) => response.data)
+    .catch((error) => {
+      console.error(error);
+    });
+  return result;
+};
 
 export {
-  loginFetch,
+  login,
+  emailAndPasswordValidation,
+  searchUserByEmail,
+  newUserRegister,
+  pathRedirectByProfile,
 };
