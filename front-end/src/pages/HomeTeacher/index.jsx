@@ -1,7 +1,7 @@
 import React from 'react';
 import { HeaderTeacher } from '../../components';
 
-export default function Home() {
+export default function HomeTeacher() {
   return (
     <main>
       <HeaderTeacher />
