@@ -36,6 +36,7 @@ const errorMessage = {
   C404PostNotExist: 'Post does not exist',
   C404UserNotExist: 'User does not exist',
   C409: 'User already registered',
+  C500: 'It was not possible to complete your request.',
 };
 
 const successMessage = {

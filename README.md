@@ -4,6 +4,20 @@ Desafio Técnico
 
 Empresa: Plataforma A+
 
+## Tags de staks utilizadas no Desafio
+
+<img src="https://img.shields.io/badge/JavaScript-yellow?style=for-the-badge">
+<img src="https://img.shields.io/badge/NodeJS-green?style=for-the-badge">
+<img src="https://img.shields.io/badge/MySQL-blue?style=for-the-badge">
+<img src="https://img.shields.io/badge/MSC-yellow?style=for-the-badge">
+<img src="https://img.shields.io/badge/ExpressJS-yellowgreen?style=for-the-badge">
+<img src="https://img.shields.io/badge/Sequelize-lightgrey?style=for-the-badge">
+<img src="https://img.shields.io/badge/ReactJS-9cf?style=for-the-badge">
+<img src="https://img.shields.io/badge/BootStrap-blueviolet?style=for-the-badge">
+<img src="https://img.shields.io/badge/EsLint-orange?style=for-the-badge">
+<img src="https://img.shields.io/badge/JWT-red?style=for-the-badge">
+<img src="https://img.shields.io/badge/bcrypt-ff69b4?style=for-the-badge">
+
 ## Para executar aplicação
 
 - Efetue o clone do repositório em sua máquina
@@ -18,7 +32,7 @@ Empresa: Plataforma A+
 
   `npm run install-full`
 
-- Faça as configurações de acesso à sua instância do MySQL através de um arquivo `env` preenchendo as chaves conforme a instalação do MySQL feita em sua máquina, nos campos `MYSQL_USER` e `MY_SQL_PASSWORD`
+- Faça as configurações de acesso à sua instância do MySQL através de um arquivo `.env` na raiz da pasta `back-end` preenchendo as chaves conforme a instalação do MySQL feita em sua máquina, nos campos `MYSQL_USER` e `MY_SQL_PASSWORD`
 
   ```js
   MYSQL_USER=seu_usario_aqui
@@ -72,6 +86,7 @@ Empresa: Plataforma A+
   - Framework ORM: Sequelize
 
 - Configurado para ser executado em `http://localhost:3001`
+
 ## Front-End
 
 - Interface: React.JS
@@ -112,7 +127,6 @@ Desenvolver uma aplicação WEB ou APP, para controlar Alunos e Professores em s
     - Nome do Banco de Dados:
       `colleges`
     - (EER) Diagram
-
       ![Diagrama](./public/diagrama.png)
 
 ## Validações no Back-End
@@ -130,7 +144,6 @@ Desenvolver uma aplicação WEB ou APP, para controlar Alunos e Professores em s
     - Perfil (profile): são 3 (três) perfis, deve-se informar qual: `Diretoria` ou `Docente`;
 
     - Exemplo de requisição realizada com sucesso:
-
     ![Cadastro com sucesso](./public/C_201_Cadastro.png)
 
     - Como retorno de erro nas validações temos:
@@ -139,46 +152,51 @@ Desenvolver uma aplicação WEB ou APP, para controlar Alunos e Professores em s
 
         - Nome com tamanho menor que 6 caracteres
 
-        `'"Name" length must be at least 6 characters long'`
+          `'"Name" length must be at least 6 characters long'`
+
         - E-mail com formato inválido
 
-        `'"email" must be a valid email'`
+          `'"email" must be a valid email'`
+
         - Campo e-mail inexistente ou não informado
 
-        `'"email" is required'`
+          `'"email" is required'`
+
         - Senha com tamanho menor que 6 caracteres
 
-        `'"password" length must be 6 characters long'`
+          `'"password" length must be 6 characters long'`
+
         - Campo senha inexistente ou não informado
 
-        `'"password" is required'`
+          `'"password" is required'`
+
         - Campo perfil inexistente ou não informado
 
-        `'"profile" is required'`
-        - Campo perfil com atribuição inexistente
+          `'"profile" is required'`
 
-        `'"profile" must be a valid profile'`
+        - Campo perfil com atribuição inexistente
+        
+          `'"profile" must be a valid profile'`
 
       - no Status HTTP 409:
 
         - Pessoa usuária já cadastrada
-
-        `'User already registered'`
+          
+          `'User already registered'`
 
   - Listar todas as pessoas Usuárias cadastradas, verbo/rota `GET /user`:
 
     - É preciso possuir um token para acessar a listagem de pessoas cadastradas
 
       - Se não estiver com um token válido, será gerado um Status HTTP 401 com a mensagem:
-
+        
         `'Expired or invalid token'`
 
         - Se o token não for encontrado
-
+          
           `'Token not found'`
 
     - Obtendo sucesso na requisição, será exibida a listagem:
-
       ![Requisição com Sucesso](./public/C_200_Listagem_Users.png)
 
   - Listar pessoa Usuária através do Id, verbo/rota `GET /user/:id`
@@ -196,7 +214,6 @@ Desenvolver uma aplicação WEB ou APP, para controlar Alunos e Professores em s
         `'Token not found'`
 
     - Obtendo sucesso na requisição, será exibida a listagem:
-
     ![Requisição com Sucesso](./public/C_200_Listagem_Por_Id.png)
 
   - Apagar: a pessoa usuária poderá apagar o seu prórpio cadastro da tabela Users
@@ -210,7 +227,6 @@ Desenvolver uma aplicação WEB ou APP, para controlar Alunos e Professores em s
         `'Token not found'`
 
     - Estando com o token válido
-
     ![Requisição com Sucesso](./public/C_204_Apagar_Usuario.png)
 
   - Requisições de Login: `/login`
@@ -225,15 +241,27 @@ Desenvolver uma aplicação WEB ou APP, para controlar Alunos e Professores em s
       - E-mail com formato inválido
 
         `'"email" must be a valid email'`
+
       - Campo e-mail inexistente ou não informado
 
         `'"email" is required'`
+
       - Campo senha inexistente ou não informado
 
         `'"password" is required'`
+
       - E-mail ou senha incorretos
 
         `'Invalid fields, "email" or "password" incorrect'`
+
+- Requisições de Escola: `/school`
+
+  - Endpoint para lista todas Escolas, verbo/rota `GET /school/all`
+    ![Requisição com Sucesso](./public/C_200_Listagem_Schools.png)
+  
+  - Listar pessoa Usuária através do Id, verbo/rota `GET /school/:id`
+    ![Requisição com Sucesso](./public/C_200_Listagem_School_Id.png)
+
 
 ## Validações no Front-End
 
