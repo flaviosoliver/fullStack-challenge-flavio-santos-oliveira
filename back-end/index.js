@@ -14,6 +14,7 @@ app.use(express.json());
 app.use(middleware.log);
 app.use(router.userRoutes);
 app.use(router.loginRoutes);
+app.use(router.schoolRoutes);
 
 app.listen(PORT, () => {
   console.log('API rodando na porta', PORT);
