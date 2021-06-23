@@ -1,0 +1,15 @@
+{
+  "root": true,
+  "extends": [
+    "trybe-backend"
+  ],
+  "ignorePatterns": [
+    "**/migrations/*.js", "**/models/*.js", "**/seeders/*.js"],
+  "rules": {
+    "complexity": [
+      "error", {
+        "max": 6
+        }
+      ]
+  }
+}

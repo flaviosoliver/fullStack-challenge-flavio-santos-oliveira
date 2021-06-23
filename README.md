@@ -1,16 +1,88 @@
-# Plataforma A+ - Desafio FullStack
+# fullstack-challenge-flavio-santos-oliveira
 
-Estamos à procura de full-stack Developers para fazerem parte do nosso time e contribuírem com a transformação digital das escolas.
+Desafio Técnico
 
-## Quem somos
+Empresa: Plataforma A+
 
-A Plataforma A+ é uma EdTech que une um grupo de engenheiros de softwares, designers, analistas e professores apaixonados em gerar inovação para transformar e potencializar a capacidade de aprendizagem do ser humano.
+## Para executar aplicação
 
-Siga-nos no [Linkedin](https://www.linkedin.com/company/plataformaamais).
+- Efetue o clone do repositório em sua máquina
 
-Acompanhe nossas vagas no [Linkedin](https://www.linkedin.com/company/plataformaamais/jobs/).
+  `git clone https://github.com/flaviosoliver/fullStack-challenge-flavio-santos-oliveira.git`
 
----
+- Entre na pasta onde foi criado o repositório
+
+  `cd fullstack-challenge-flavio-santos-oliveira`
+
+- Execute a instalação de dependências da aplicação
+
+  `npm run install-full`
+
+- Faça as configurações de acesso à sua instância do MySQL através de um arquivo `env` preenchendo as chaves conforme a instalação do MySQL feita em sua máquina, nos campos `MYSQL_USER` e `MY_SQL_PASSWORD`
+
+  ```js
+  MYSQL_USER=seu_usario_aqui
+  MYSQL_PASSWORD=sua_senha_aqui
+  HOSTNAME=localhost
+  PORT=3001
+  ```
+
+- Entre no diretório do back-end
+
+  `cd back-end`
+
+- Crie o banco `colleges` com o Sequelize
+
+  `npx sequelize db:create`
+
+- Crie as tabelas do banco
+
+  `npx sequelize db:migrate`
+
+- Popule as tabelas com o comando (exceto a tabela de pessoas usuárias `Users`, essa tabela é alimentada por meio do endpoint, seja pelo back-end, seja pelo front-end)
+
+  `npx sequelize db:seed:all`
+
+- Inicialize o serviço do back-end
+
+  `npm run start`
+
+    - Existe a instância de desenvolvimento através do `nodemon`, caso não queira executar o `Node` em modo estático
+
+      `npm run debug`
+
+- Saia do diretório do back-end e entre no front-end
+
+  `cd .. && cd front-end`
+
+- Inicialize a o front-end da aplicação
+
+  `npm run start-front`
+
+## Back-End
+
+- SGBD: MySQL
+
+- Ambiente de execução: Node.JS
+
+  - Framework Node.JS: Express.JS
+
+- Arquitetura: ORM
+
+  - Framework ORM: Sequelize
+
+- Configurado para ser executado em `http://localhost:3001`
+## Front-End
+
+- Interface: React.JS
+
+- Configurado para ser executado em `http://localhost:3000`
+
+## Autor
+
+Flávio Santos Oliveira | email: flavsoliver@gmail.com
+
+Brasil, JUNHO - 2021.
 
 ## Desafio
 
@@ -33,51 +105,148 @@ Desenvolver uma aplicação WEB ou APP, para controlar Alunos e Professores em s
 - Os Professores devem ser capazes de adicionar observações sobre a Turma e sobre determinado Aluno.
 - A solução deve possibilitar buscar com base em alguma informação, de escolha livre, contida nas entidades.
 
-### Recomendações
+## Soluções Implementadas
 
-- Módulos de frontend e backend devem ser desenvolvidos de forma separada.
-- O backend pode ser feito utilizando uma das seguintes linguagens: Javascript, Typescript, Python ou C#, nesta ordem de preferência.
-- O frontend poderá ser desenvolvido com JavaScript, Typescript, Dart `(No caso de um app Flutter como frontend)` ou qualquer framework/ferramenta que suporte ou utilize essas tecnologias.
-- Para camada de persistência, utilize NoSQL como o MongoDB ou um SGBD relacional como o PostgreSQL. A modelagem de documentos ou entidades é livre e de acordo com o escolhido e utilizado pela sua solução.
-- O que for submetido, mesmo que incompleto, deve funcionar.
+  - Estruturação de Banco de Dados
 
-### Instruções
+    - Nome do Banco de Dados:
+      `colleges`
+    - (EER) Diagram
 
-1. Faça o **`Fork`** deste repositório;
-2. Nomeie o projeto da seguinte maneira: **fullstack-challenge-`nome-sobrenome`**;
-3. Ao concluir o desafio, publique em seu próprio repositório, **com acesso `público` habilitado** e envie o link para os e-mails <alex.souza@plataformaamais.com.br> e/ou <bruno.souza@plataformaamais.com.br>.
+      ![Diagrama](./public/diagrama.png)
 
-### Considerações gerais
+## Validações no Back-End
 
-- Utilize as melhores práticas que você conhece.
-- Utilize ferramentas visuais como desenhos, fluxos e diagramas para explicar sua solução, sem muita formalidade, apenas para passar uma idéia geral e/ou explicar pontos interessantes.
-- As opções de tecnologias são baseadas no que utilizamos para desenvolver soluções hoje. Porém, na Plataforma A+, o foco no resultado é muito valorizado, por isso não se sinta limitado e caso tenha implementações fora dos opcionais oferecidos de tecnologias e ferramentas, foque em responder o desafio com o que conhece.
-- Caso não termine o desafio, utilizaremos o que entregou como base para a conversa.
-- Lembre-se que iremos analisar seu desafio e terá a chance de explicar sua estratégia para pessoas de tecnologia.
-- Teremos uma conversa agradável e objetiva, onde falaremos sobre tech, com base neste desafio.
+- Requisições de Usuário: `/user`
 
-### Critérios de avaliação
+  - Cadastro: Para cadastrar um usuário é necessário informar campos corretamente da seguinte forma (todos os campos são obrigatórios, caso desconformidade, erro característico é retornado), verbo/rota `POST /user`:
 
-- Organização.
-- Manutenibilidade.
-- Legibilidade, limpeza, clareza do código​.
-- Resultado funcional.
-- Flexibilidade da aplicação:​ Parametrização, agnóstico ao ambiente, escalabilidade, etc.
-- Segurança​.
-- Documentação objetiva.
-- Cobertura de código.
-- Escolhas técnicas e suas justificativas.
-- Histórico de commits​.
+    - Nome (name): mínimo de 6 (seis) caracteres;
 
-### Diferenciais
+    - Senha (password): mínimo de 6 (seis) caracteres;
 
-- Utilizar layout responsivo.
-- Boas práticas de UX na solução.
-- Backend dockerizado.
-- Documentação.
-- Testes unitários e de integração.
-- Uso de TDD.
-- Uso de patterns.
-- Abordagem para desenvolvimento de software.
+    - E-mail (email): padrão válido: `nome@dominio.servico` (user@escola.com)
 
-**Boa sorte!**
+    - Perfil (profile): são 3 (três) perfis, deve-se informar qual: `Diretoria` ou `Docente`;
+
+    - Exemplo de requisição realizada com sucesso:
+
+    ![Cadastro com sucesso](./public/C_201_Cadastro.png)
+
+    - Como retorno de erro nas validações temos:
+
+      - no Status HTTP 400:
+
+        - Nome com tamanho menor que 6 caracteres
+
+        `'"Name" length must be at least 6 characters long'`
+        - E-mail com formato inválido
+
+        `'"email" must be a valid email'`
+        - Campo e-mail inexistente ou não informado
+
+        `'"email" is required'`
+        - Senha com tamanho menor que 6 caracteres
+
+        `'"password" length must be 6 characters long'`
+        - Campo senha inexistente ou não informado
+
+        `'"password" is required'`
+        - Campo perfil inexistente ou não informado
+
+        `'"profile" is required'`
+        - Campo perfil com atribuição inexistente
+
+        `'"profile" must be a valid profile'`
+
+      - no Status HTTP 409:
+
+        - Pessoa usuária já cadastrada
+
+        `'User already registered'`
+
+  - Listar todas as pessoas Usuárias cadastradas, verbo/rota `GET /user`:
+
+    - É preciso possuir um token para acessar a listagem de pessoas cadastradas
+
+      - Se não estiver com um token válido, será gerado um Status HTTP 401 com a mensagem:
+
+        `'Expired or invalid token'`
+
+        - Se o token não for encontrado
+
+          `'Token not found'`
+
+    - Obtendo sucesso na requisição, será exibida a listagem:
+
+      ![Requisição com Sucesso](./public/C_200_Listagem_Users.png)
+
+  - Listar pessoa Usuária através do Id, verbo/rota `GET /user/:id`
+
+    - Caso requisite por um Id não existente, será exibido o Status HTTP 404, com a mensagem:
+
+      `'User does not exist'`
+
+    - Se não estiver com um token válido, será gerado um Status HTTP 401 com a mensagem:
+
+      `'Expired or invalid token'`
+
+      - Se o token não for encontrado
+
+        `'Token not found'`
+
+    - Obtendo sucesso na requisição, será exibida a listagem:
+
+    ![Requisição com Sucesso](./public/C_200_Listagem_Por_Id.png)
+
+  - Apagar: a pessoa usuária poderá apagar o seu prórpio cadastro da tabela Users
+
+    - Se não estiver com um token válido, será gerado um Status HTTP 401 com a mensagem:
+
+      `'Expired or invalid token'`
+
+      - Se o token não for encontrado
+
+        `'Token not found'`
+
+    - Estando com o token válido
+
+    ![Requisição com Sucesso](./public/C_204_Apagar_Usuario.png)
+
+  - Requisições de Login: `/login`
+
+    Sendo usuária já cadastrada no sistema, a pessoa pode realizar o login e ter o seu token gerado
+
+    - Validações de login, campos e-mail e senha são obrigatórios
+
+      - E-mail e senha devem ser informados corretamente
+        ![Requisição com Sucesso](./public/C_200_Login.png)
+
+      - E-mail com formato inválido
+
+        `'"email" must be a valid email'`
+      - Campo e-mail inexistente ou não informado
+
+        `'"email" is required'`
+      - Campo senha inexistente ou não informado
+
+        `'"password" is required'`
+      - E-mail ou senha incorretos
+
+        `'Invalid fields, "email" or "password" incorrect'`
+
+## Validações no Front-End
+
+  - Ao iniciar a aplicação, será aberto o site na tela de login, `http://localhost:3000/login`
+
+  - O botão `Entrar` permanece desativado até a pessoa inserir um e-mail de formato válido e uma senha com no mínimo 6 (seis) caracteres.
+  
+  - Caso insira valores que divergem do cadastro do Banco de Dados, será exibido uma mensagem de alerta
+
+    `'E-mail ou Senha incorretos. Tente novamente.'`
+  
+  - Quando inserir os dados corretos e clicado em `Entrar`, o site será redirecionado para a Home conforme o seu perfil (Diretoria ou Docente)
+  
+    `http://localhost:3000/home/diretoria` || `http://localhost:3000/home/docente`
+
+  - Ao clicar no botão `Ainda não tenho cadastro` será redirecionado para a tela de cadastro
