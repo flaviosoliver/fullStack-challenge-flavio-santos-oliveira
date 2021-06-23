@@ -1,5 +1,5 @@
-const definePostModel = (sequelize, DataTypes) => {
-  const Post = sequelize.define('Post', {
+const definePostCourseModel = (sequelize, DataTypes) => {
+  const Post = sequelize.define('PostCourse', {
     text: DataTypes.STRING,
     teacherId: {
       type: DataTypes.INTEGER,
@@ -30,4 +30,4 @@ const definePostModel = (sequelize, DataTypes) => {
   return Post;
 };
 
-module.exports = definePostModel;
+module.exports = definePostCourseModel;
