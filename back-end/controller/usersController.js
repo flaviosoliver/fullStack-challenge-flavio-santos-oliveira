@@ -5,6 +5,10 @@ const {
   C_200, C_201, C_204, C_400, C_404, C_409, C_500,
 } = utils.statusHttp;
 
+const {
+  C200User,
+} = utils.successMessage;
+
 const createUser = async (req, res) => {
   const { name, email, password, profile } = req.body;
   try {
@@ -68,9 +72,24 @@ const deleteUser = async (req, res) => {
   }
 };
 
+const getUserByEmail = async (req, res) => {
+  const { email } = req.body;
+  try {
+    const user = await usersService.getUserByEmail(email);
+    if (user.code404) {
+      return res.status(C_404).send({ message: user.message });
+    }
+    return res.status(C_200).send({ message: C200User });
+  } catch (error) {
+    console.error(error);
+    return res.status(C_500).json({ message: error.message });
+  }
+}
+
 module.exports = {
   createUser,
   getAllUsers,
   getUserById,
   deleteUser,
+  getUserByEmail,
 };

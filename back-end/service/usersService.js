@@ -13,8 +13,8 @@ const {
   C400PasswordRequired,
   C400ProfileRequired,
   C400ProfileRules,
-  C409,
   C404UserNotExist,
+  C409,
 } = utils.errorMessage;
 
 function validateEmail(email) {
@@ -131,7 +131,7 @@ const create = async (name, email, password, profile) => {
   if (checkLength !== true) { return checkLength; }
   if (checkProfileRule !== true) { return checkProfileRule; }
   const login = await User.create({ name, email, password: key, profile });
-  const token = utils.generateToken(login.id, login.email, login.key);
+  const token = utils.generateToken(login.id, login.email, login.profile);
   return token;
 };
 
@@ -160,9 +160,20 @@ const deleteUser = async (req) => {
   await User.destroy({ where: { id: userId } });
 };
 
+const getUserByEmail = async (email) => {
+  const user = await User.findOne({ where: { email } });
+    if (!user) {
+      return {
+        code404: true, message: C404UserNotExist,
+      };
+  }
+  return user;
+};
+
 module.exports = {
   create,
   getAllUsers,
   getUserById,
   deleteUser,
+  getUserByEmail,
 };

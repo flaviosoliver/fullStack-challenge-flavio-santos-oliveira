@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt-nodejs');
 const jwt = require('jsonwebtoken');
 
 const SECONDS = 60;
-const MULTIPLIER = 3000;
+const MULTIPLIER = 300000;
 const secret = process.env.SECRET || 'developing';
 
 const statusHttp = {
@@ -38,12 +38,16 @@ const errorMessage = {
   C409: 'User already registered',
 };
 
-const generateToken = (userId, email, password) => {
+const successMessage = {
+  C200User: 'User exists',
+}
+
+const generateToken = (userId, email, profile) => {
   const jwtConfig = {
     expiresIn: SECONDS * MULTIPLIER,
     algorithm: 'HS256',
   };
-  const token = jwt.sign({ data: { userId, email, password } }, secret, jwtConfig);
+  const token = jwt.sign({ data: { userId, email, profile } }, secret, jwtConfig);
   return token;
 };
 
@@ -57,6 +61,7 @@ const cryptPassword = (password) => {
 module.exports = {
   statusHttp,
   errorMessage,
+  successMessage,
   generateToken,
   cryptPassword,
   secret,

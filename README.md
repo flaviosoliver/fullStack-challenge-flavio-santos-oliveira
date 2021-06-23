@@ -8,15 +8,56 @@ Empresa: Plataforma A+
 
 - Efetue o clone do repositório em sua máquina
 
-`git clone https://github.com/flaviosoliver/fullStack-challenge-flavio-santos-oliveira.git`
+  `git clone https://github.com/flaviosoliver/fullStack-challenge-flavio-santos-oliveira.git`
 
 - Entre na pasta onde foi criado o repositório
 
-`cd fullstack-challenge-flavio-santos-oliveira`
+  `cd fullstack-challenge-flavio-santos-oliveira`
 
-- Execute a instalação de dependências e a inicialização da aplicação
+- Execute a instalação de dependências da aplicação
 
-`npm run install-start-full`
+  `npm run install-full`
+
+- Faça as configurações de acesso à sua instância do MySQL através de um arquivo `env` preenchendo as chaves conforme a instalação do MySQL feita em sua máquina, nos campos `MYSQL_USER` e `MY_SQL_PASSWORD`
+
+  ```js
+  MYSQL_USER=seu_usario_aqui
+  MYSQL_PASSWORD=sua_senha_aqui
+  HOSTNAME=localhost
+  PORT=3001
+  ```
+
+- Entre no diretório do back-end
+
+  `cd back-end`
+
+- Crie o banco `colleges` com o Sequelize
+
+  `npx sequelize db:create`
+
+- Crie as tabelas do banco
+
+  `npx sequelize db:migrate`
+
+- Popule as tabelas com o comando (exceto a tabela de pessoas usuárias `Users`, essa tabela é alimentada por meio do endpoint, seja pelo back-end, seja pelo front-end)
+
+  `npx sequelize db:seed:all`
+
+- Inicialize o serviço do back-end
+
+  `npm run start`
+
+    - Existe a instância de desenvolvimento através do `nodemon`, caso não queira executar o `Node` em modo estático
+
+      `npm run debug`
+
+- Saia do diretório do back-end e entre no front-end
+
+  `cd .. && cd front-end`
+
+- Inicialize a o front-end da aplicação
+
+  `npm run start-front`
 
 ## Back-End
 
@@ -30,11 +71,14 @@ Empresa: Plataforma A+
 
   - Framework ORM: Sequelize
 
+- Configurado para ser executado em `http://localhost:3001`
 ## Front-End
 
-Interface: React.JS
+- Interface: React.JS
 
-### Autor
+- Configurado para ser executado em `http://localhost:3000`
+
+## Autor
 
 Flávio Santos Oliveira | email: flavsoliver@gmail.com
 
@@ -192,3 +236,17 @@ Desenvolver uma aplicação WEB ou APP, para controlar Alunos e Professores em s
         `'Invalid fields, "email" or "password" incorrect'`
 
 ## Validações no Front-End
+
+  - Ao iniciar a aplicação, será aberto o site na tela de login, `http://localhost:3000/login`
+
+  - O botão `Entrar` permanece desativado até a pessoa inserir um e-mail de formato válido e uma senha com no mínimo 6 (seis) caracteres.
+  
+  - Caso insira valores que divergem do cadastro do Banco de Dados, será exibido uma mensagem de alerta
+
+    `'E-mail ou Senha incorretos. Tente novamente.'`
+  
+  - Quando inserir os dados corretos e clicado em `Entrar`, o site será redirecionado para a Home conforme o seu perfil (Diretoria ou Docente)
+  
+    `http://localhost:3000/home/diretoria` || `http://localhost:3000/home/docente`
+
+  - Ao clicar no botão `Ainda não tenho cadastro` será redirecionado para a tela de cadastro
