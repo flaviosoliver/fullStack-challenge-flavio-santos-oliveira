@@ -245,6 +245,8 @@ Desenvolver uma aplicação WEB ou APP, para controlar Alunos e Professores em s
 
     `'E-mail ou Senha incorretos. Tente novamente.'`
   
-  - Quando inserir os dados corretos e clicado em `Entrar`, o site será redirecionado para
+  - Quando inserir os dados corretos e clicado em `Entrar`, o site será redirecionado para a Home conforme o seu perfil (Diretoria ou Docente)
   
-    `http://localhost:3000/home`
+    `http://localhost:3000/home/diretoria` || `http://localhost:3000/home/docente`
+
+  - Ao clicar no botão `Ainda não tenho cadastro` será redirecionado para a tela de cadastro
