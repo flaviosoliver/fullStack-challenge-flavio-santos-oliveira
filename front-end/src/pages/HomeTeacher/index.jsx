@@ -5,7 +5,9 @@ export default function Home() {
   return (
     <main>
       <HeaderTeacher />
-      Escolha a Escola desejada
+      Olá Docente, esse é o ambiente de Gestão Escolar.
+
+      Através do Menu acima, escolha a tarefa desejada.
     </main>
   );
 }
