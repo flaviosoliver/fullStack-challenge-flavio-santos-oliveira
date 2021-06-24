@@ -15,6 +15,7 @@ app.use(middleware.log);
 app.use(router.userRoutes);
 app.use(router.loginRoutes);
 app.use(router.schoolRoutes);
+app.use(router.courseRoutes);
 
 app.listen(PORT, () => {
   console.log('API rodando na porta', PORT);

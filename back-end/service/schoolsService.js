@@ -3,31 +3,37 @@ const utils = require('./utils');
 const { School } = require('../models');
 
 const {
-  C404UserNotExist,
+  C404SchoolNotExist,
   C500,
 } = utils.errorMessage;
 
 const getAllSchools = async () => {
-  const users = await School.findAll();
-  if (!users) {
+  const schools = await School.findAll();
+  if (!schools) {
     return {
       code500: true, message: C500,
     };
   }
-  return users;
+  return schools;
 };
 
 const getSchoolById = async (id) => {
   const school = await School.findOne({ where: { id } });
   if (!school) {
       return {
-        code404: true, message: C404UserNotExist,
+        code404: true, message: C404SchoolNotExist,
       };
   }
+  return school;
+};
+
+const updateSchool = async (id, name, principal) => {
+  const school = await School.update({ name, principal }, { where: { id } });
   return school;
 };
 
 module.exports = {
   getAllSchools,
   getSchoolById,
+  updateSchool,
 }

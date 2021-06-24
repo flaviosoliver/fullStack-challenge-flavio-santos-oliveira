@@ -35,13 +35,16 @@ const errorMessage = {
   C401UserNotAuth: 'Unauthorized user',
   C404PostNotExist: 'Post does not exist',
   C404UserNotExist: 'User does not exist',
+  C404CourseNotExist: 'Course does not exist',
+  C404SchoolNotExist: 'School does not exist',
   C409: 'User already registered',
   C500: 'It was not possible to complete your request.',
 };
 
 const successMessage = {
   C200User: 'User exists',
-}
+  C201School: 'School updated successfully',
+};
 
 const generateToken = (userId, email, profile) => {
   const jwtConfig = {
