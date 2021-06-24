@@ -52,8 +52,29 @@ const updateSchool = async (req, res) => {
 const deleteSchool = async (req, res) => {
   try {
     const { id } = req.params;
-    await schoolsService.deleteUser(id);
+    await schoolsService.deleteSchool(id);
     return res.status(C_204).send();
+  } catch (error) {
+    console.error(error);
+    return res.status(C_500).json({ message: error.message });
+  }
+};
+
+const getCountAllSchools = async (req, res) => {
+  try {
+    const schools = await schoolsService.getCountAllSchools();
+    return res.status(C_200).send(schools);
+  } catch (error) {
+    console.error(error);
+    return res.status(C_500).json({ message: error.message });
+  }
+};
+
+const createSchool = async (req, res) => {
+  try {
+    const { name, principal } = req.body;
+    const school = await schoolsService.createSchool(name, principal);
+    return res.status(C_201).send({ school });
   } catch (error) {
     console.error(error);
     return res.status(C_500).json({ message: error.message });
@@ -65,4 +86,6 @@ module.exports = {
   getSchoolById,
   updateSchool,
   deleteSchool,
+  getCountAllSchools,
+  createSchool,
 }

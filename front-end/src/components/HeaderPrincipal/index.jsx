@@ -13,7 +13,7 @@ export default function HeaderPrincipal() {
           <Nav.Link href="/home">Página Inicial</Nav.Link>
 
           <NavDropdown title="Escolas" id="basic-nav-dropdown">
-            <NavDropdown.Item href="/escolas">Ver Escolas</NavDropdown.Item>
+            <NavDropdown.Item href="diretoria/escolas">Ver Escolas</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href="/escolas/cadastrar">Cadastrar Escola</NavDropdown.Item>
           </NavDropdown>

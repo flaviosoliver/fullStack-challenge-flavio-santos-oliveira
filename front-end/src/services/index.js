@@ -5,7 +5,19 @@ require('dotenv');
 
 const URL_BACK_END = 'http://localhost:3001';
 
+const invalidToken = 'Token inválido ou não encontrado';
+
 const secret = process.env.SECRET || 'developing';
+
+const userLogged = JSON.parse(localStorage.getItem('user'));
+const { token } = userLogged === null ? '' : userLogged;
+
+const config = {
+  headers: {
+    'Content-Type': 'application/json',
+    authorization: token,
+  },
+};
 
 const login = async (userLogin) => {
   const { email, password } = userLogin;
@@ -69,10 +81,18 @@ const newUserRegister = async (newUserData) => {
   return result;
 };
 
-const decodedToken = (token) => {
-  const decoded = jwt.verify(token, secret);
+const decodedToken = (userToken) => {
+  const decoded = jwt.verify(userToken, secret);
   const { userId, email, profile } = decoded.data;
   return { userId, email, profile };
+};
+
+const schoolList = async () => {
+  const schools = await axios.get(`${URL_BACK_END}/school/all`, config).then((response) => response.data)
+    .catch((error) => {
+      if (error) return { error: invalidToken };
+    });
+  return schools;
 };
 
 export {
@@ -82,4 +102,5 @@ export {
   newUserRegister,
   pathRedirectByProfile,
   decodedToken,
+  schoolList,
 };

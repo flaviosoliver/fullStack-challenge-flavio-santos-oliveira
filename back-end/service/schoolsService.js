@@ -32,13 +32,30 @@ const updateSchool = async (id, name, principal) => {
   return school;
 };
 
-const deleteUser = async (id) => {
+const deleteSchool = async (id) => {
   await School.destroy({ where: { id } });
 };
+
+const getCountAllSchools = async () => {
+  const schools = await School.findAndCountAll();
+  if (!schools) {
+    return {
+      code500: true, message: C500,
+    };
+  }
+  return schools;
+};
+
+const createSchool = async (name, principal) => {
+  const school = await School.create({ name, principal });
+  return school;
+}
 
 module.exports = {
   getAllSchools,
   getSchoolById,
   updateSchool,
-  deleteUser,
+  deleteSchool,
+  getCountAllSchools,
+  createSchool,
 }

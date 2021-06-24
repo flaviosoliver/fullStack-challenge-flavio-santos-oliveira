@@ -13,9 +13,9 @@ router.get('/user/all',
   validateToken,
   usersController.getAllUsers);
 
-// router.get('/user/:id',
-// validateToken,
-// usersController.getUserById);
+router.get('/user/id/:id',
+validateToken,
+usersController.getUserById);
 
 router.delete('/user/me',
 validateToken,
