@@ -6,7 +6,7 @@ Empresa: Plataforma A+
 
 ## Tags de staks utilizadas no Desafio
 
-<img src="https://img.shields.io/badge/JavaScript-yellow?style=for-the-badge"> <img src="https://img.shields.io/badge/NodeJS-green?style=for-the-badge"> <img src="https://img.shields.io/badge/MySQL-blue?style=for-the-badge"> <img src="https://img.shields.io/badge/MSC-yellow?style=for-the-badge"> <img src="https://img.shields.io/badge/ExpressJS-yellowgreen?style=for-the-badge"> <img src="https://img.shields.io/badge/Sequelize-lightgrey?style=for-the-badge"> <img src="https://img.shields.io/badge/ReactJS-9cf?style=for-the-badge"> <img src="https://img.shields.io/badge/BootStrap-blueviolet?style=for-the-badge"> <img src="https://img.shields.io/badge/EsLint-orange?style=for-the-badge"> <img src="https://img.shields.io/badge/JWT-red?style=for-the-badge"> <img src="https://img.shields.io/badge/bcrypt-ff69b4?style=for-the-badge">
+<img src="https://img.shields.io/badge/JavaScript-yellow?style=for-the-badge"> <img src="https://img.shields.io/badge/NodeJS-green?style=for-the-badge"> <img src="https://img.shields.io/badge/MySQL-blue?style=for-the-badge"> <img src="https://img.shields.io/badge/MSC-red?style=for-the-badge"> <img src="https://img.shields.io/badge/ExpressJS-yellowgreen?style=for-the-badge"> <img src="https://img.shields.io/badge/Sequelize-lightgrey?style=for-the-badge"> <img src="https://img.shields.io/badge/ReactJS-9cf?style=for-the-badge"> <img src="https://img.shields.io/badge/BootStrap-blueviolet?style=for-the-badge"> <img src="https://img.shields.io/badge/EsLint-orange?style=for-the-badge"> <img src="https://img.shields.io/badge/JWT-red?style=for-the-badge"> <img src="https://img.shields.io/badge/bcrypt-ff69b4?style=for-the-badge">
 
 ## Para executar aplicação
 

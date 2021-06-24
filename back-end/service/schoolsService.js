@@ -32,8 +32,13 @@ const updateSchool = async (id, name, principal) => {
   return school;
 };
 
+const deleteUser = async (id) => {
+  await School.destroy({ where: { id } });
+};
+
 module.exports = {
   getAllSchools,
   getSchoolById,
   updateSchool,
+  deleteUser,
 }

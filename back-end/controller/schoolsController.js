@@ -51,7 +51,9 @@ const updateSchool = async (req, res) => {
 
 const deleteSchool = async (req, res) => {
   try {
-    
+    const { id } = req.params;
+    await schoolsService.deleteUser(id);
+    return res.status(C_204).send();
   } catch (error) {
     console.error(error);
     return res.status(C_500).json({ message: error.message });
@@ -62,4 +64,5 @@ module.exports = {
   getAllSchools,
   getSchoolById,
   updateSchool,
+  deleteSchool,
 }

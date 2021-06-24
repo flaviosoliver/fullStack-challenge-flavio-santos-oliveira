@@ -12,7 +12,7 @@ schoolController.getSchoolById);
 router.put('/school/:id',
 schoolController.updateSchool);
 
-// router.delete('/school/:id',
-// schoolController.deleteSchool);
+router.delete('/school/:id',
+schoolController.deleteSchool);
 
 module.exports = router;
