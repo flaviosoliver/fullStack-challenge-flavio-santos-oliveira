@@ -3,6 +3,8 @@ import Main from './Main';
 import HomePrincipal from './HomePrincipal';
 import HomeTeacher from './HomeTeacher';
 import Register from './Register';
+import SchoolsPrincipal from './SchoolsPrincipal';
+import SchoolView from './SchoolView';
 
 export {
   Login,
@@ -10,4 +12,6 @@ export {
   HomePrincipal,
   HomeTeacher,
   Register,
+  SchoolsPrincipal,
+  SchoolView,
 };
