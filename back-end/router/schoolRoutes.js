@@ -31,4 +31,8 @@ router.post('/school/new',
 validateToken,
 schoolController.createSchool);
 
+router.get('/school/full/:id',
+validateToken,
+schoolController.getSchoolFullDetailsById);
+
 module.exports = router;

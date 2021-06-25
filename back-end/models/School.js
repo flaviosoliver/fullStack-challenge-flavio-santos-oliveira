@@ -4,6 +4,13 @@ const defineSchoolModel = (sequelize, DataTypes) => {
     principal: DataTypes.STRING,
   }, { timestamps: false });
 
+  School.associate = (models) => {
+    School.hasMany(models.Course, {
+      as: 'course',
+      foreignKey: 'schoolId',
+    });
+  };
+
   return School;
 };
 

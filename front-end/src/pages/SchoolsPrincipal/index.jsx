@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import { Table, Button } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import { HeaderPrincipal } from '../../components';
 import { schoolList } from '../../services';
 
@@ -24,12 +24,6 @@ export default function SchoolsPrincipal() {
         });
     }
   }, [history, setIsLoading]);
-
-  // const handleSelectSchool = (event) => {
-  //   event.preventDefault();
-
-  //   history.push('/home/diretoria/escolas/');
-  // };
 
   return isLoading ? (
     <div>Carregando...</div>

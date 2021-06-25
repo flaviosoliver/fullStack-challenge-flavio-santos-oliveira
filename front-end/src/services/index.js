@@ -88,11 +88,21 @@ const decodedToken = (userToken) => {
 };
 
 const schoolList = async () => {
-  const schools = await axios.get(`${URL_BACK_END}/school/all`, config).then((response) => response.data)
+  const schools = await axios.get(`${URL_BACK_END}/school/all`, config)
+    .then((response) => response.data)
     .catch((error) => {
       if (error) return { error: invalidToken };
     });
   return schools;
+};
+
+const schoolDetails = async (id) => {
+  const school = await axios.get(`${URL_BACK_END}/school/full/${id}`, config)
+    .then((response) => response.data)
+    .catch((error) => {
+      if (error) return { error: invalidToken };
+    });
+  return school;
 };
 
 export {
@@ -103,4 +113,5 @@ export {
   pathRedirectByProfile,
   decodedToken,
   schoolList,
+  schoolDetails,
 };

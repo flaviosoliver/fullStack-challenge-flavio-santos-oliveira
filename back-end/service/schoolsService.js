@@ -1,6 +1,6 @@
 const utils = require('./utils');
 
-const { School } = require('../models');
+const { School, Course } = require('../models');
 
 const {
   C404SchoolNotExist,
@@ -49,6 +49,21 @@ const getCountAllSchools = async () => {
 const createSchool = async (name, principal) => {
   const school = await School.create({ name, principal });
   return school;
+};
+
+const getSchoolFullDetailsById = async (id) => {
+  const school = await School.findOne({
+    where: { id },
+    include: [
+      { model: Course, as: 'course' },
+    ]
+  });
+  if (!school) {
+      return {
+        code404: true, message: C404SchoolNotExist,
+      };
+  }
+  return school;
 }
 
 module.exports = {
@@ -58,4 +73,5 @@ module.exports = {
   deleteSchool,
   getCountAllSchools,
   createSchool,
+  getSchoolFullDetailsById,
 }

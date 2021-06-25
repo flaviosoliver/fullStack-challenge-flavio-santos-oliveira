@@ -81,6 +81,20 @@ const createSchool = async (req, res) => {
   }
 };
 
+const getSchoolFullDetailsById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const school = await schoolsService.getSchoolFullDetailsById(id);
+    if (school.code404) {
+      return res.status(C_404).send({ message: school.message });
+    }
+    return res.status(C_200).send([school]);
+  } catch (error) {
+    console.error(error);
+    return res.status(C_500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getAllSchools,
   getSchoolById,
@@ -88,4 +102,5 @@ module.exports = {
   deleteSchool,
   getCountAllSchools,
   createSchool,
+  getSchoolFullDetailsById,
 }

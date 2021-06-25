@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import {
-  Main, Login, Register, HomePrincipal, HomeTeacher, SchoolsPrincipal,
+  Main, Login, Register, HomePrincipal, HomeTeacher, SchoolsPrincipal, SchoolView,
 } from '../pages';
 
 const Routes = () => (
@@ -12,6 +12,7 @@ const Routes = () => (
     <Route exact path="/home/diretoria" component={HomePrincipal} />
     <Route exact path="/home/docente" component={HomeTeacher} />
     <Route exact path="/home/diretoria/escolas" component={SchoolsPrincipal} />
+    <Route exact path="/home/diretoria/escolas/:id" component={SchoolView} />
   </Switch>
 );
 
