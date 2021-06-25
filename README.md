@@ -252,6 +252,9 @@ Desenvolver uma aplicação WEB ou APP, para controlar Alunos e Professores em s
   - Listar pessoa Usuária através do Id, verbo/rota `GET /school/:id`
     ![Requisição com Sucesso](./public/C_200_Listagem_School_Id.png)
 
+  - Ao entrar na Home da Diretoria, verá a listagem de escolas cadastradas no sistema, deve-se escolher qual quer ver os detalhes.
+  
+  - Após escolher a escola, o site é redirecionado para a exibição das turmas pertencentes a essa escola.
 
 ## Validações no Front-End
 
