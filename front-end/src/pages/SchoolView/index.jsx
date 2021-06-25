@@ -41,22 +41,20 @@ export default function SchoolView() {
               <th>Professor Responsável</th>
             </tr>
           </thead>
-          <tbody>
-            {schoolShow.map((school) => (
-              <div key={school.courseId}>
-                {school.course.map((course) => (
-                  <tr key={course.name}>
-                    <td>
-                      {course.name}
-                    </td>
-                    <td>
-                      {course.teacherId}
-                    </td>
-                  </tr>
-                ))}
-              </div>
-            ))}
-          </tbody>
+          {schoolShow.map((school) => (
+            <tbody key={school.courseId}>
+              {school.course.map((course) => (
+                <tr key={course.name}>
+                  <td>
+                    {course.name}
+                  </td>
+                  <td>
+                    {course.teacherId}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          ))}
         </Table>
       </main>
     );
