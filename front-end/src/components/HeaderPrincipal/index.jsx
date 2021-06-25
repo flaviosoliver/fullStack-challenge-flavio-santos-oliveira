@@ -10,7 +10,7 @@ export default function HeaderPrincipal() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/home">Página Inicial</Nav.Link>
+          <Nav.Link href="/home/diretoria">Página Inicial</Nav.Link>
 
           <NavDropdown title="Escolas" id="basic-nav-dropdown">
             <NavDropdown.Item href="diretoria/escolas">Ver Escolas</NavDropdown.Item>
